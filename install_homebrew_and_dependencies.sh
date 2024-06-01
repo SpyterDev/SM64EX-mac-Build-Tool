@@ -1,9 +1,11 @@
 #!/bin/zsh
 
+scriptdir="${0:a:h}"
+
 # Runs Homebrew install script
 
-./install_homebrew.sh
+$scriptdir/install_homebrew.sh
 
 # Runs Dependency install script
 
-./install_dependencies.sh
+$scriptdir/install_dependencies.sh

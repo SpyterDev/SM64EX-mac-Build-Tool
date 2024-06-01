@@ -42,7 +42,34 @@ $repodir/tools/apply_patch.sh $repodir/enhancements/60fps_ex.patch
 # It is recommended that you add some more build parameters
 # It is better to add these parameters for the best experience: BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 
 
-gmake OSX_BUILD=1 -j4 
+printf "\nWould you like to compile with BETTERCAMERA (Puppycam).\nThis will allow you to look around using your mouse!\nThis is Highly recommended [Y/N]:\n > "
+read -q using_better_cam
+
+if [ $using_better_cam = "y" ]; then
+    using_better_cam=1
+else
+    using_better_cam=0
+    fi
+
+printf "\nWould you like to compile with NODRAWINGDISTANCE.\nThis will remove the render distance limit and allow you to see futher!\nThis is recommended [Y/N]:\n > "
+read -q using_no_draw_distance
+
+if [ using_no_draw_distance = "y" ]; then
+    using_no_draw_distance=1
+else
+    using_no_draw_distance=0
+    fi
+
+printf "\nWould you like to compile with TEXTURE_FIX.\nThis will fix some texture related bugs!\nThis is recommended [Y/N]:\n > "
+read -q using_texture_fix
+
+if [ using_texture_fix = "y" ]; then
+    using_texture_fix=1
+else
+    using_texture_fix=0
+    fi
+
+gmake OSX_BUILD=1 RENDER_API=GL BETTERCAMERA=$using_better_cam NODRAWINGDISTANCE=$using_no_draw_distance TEXTURE_FIX=$using_texture_fix -j4 
 
 cd "$scriptdir"
 # Cleanup

@@ -6,15 +6,26 @@
 # Checking to see if Homebrew is already installed
 
 if [ -e "/opt/homebrew/" ]; then
-    printf "Homebrew is already installed!\n\n"
+    printf "Homebrew is already installed!\n"
     exit 0
 fi
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Now terminal can use Homebrew
+printf "sm64ex requires dependencies (gmake sdl2 glew glfw pkg-config dylibbundler mingw-w64) which can be installed from the Homebrew Package Manager. \nWould you like to install Homebrew [Y/N]:"
 
-eval "$(homebrew/bin/brew shellenv)"
+read -q install_homebrew
 
-#Adds Homebrew into your .zprofile file so you can use it in future terminal sessions
+if [ install_homebrew = "y" ]; then
 
-cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Now terminal can use Homebrew
+
+    eval "$(homebrew/bin/brew shellenv)"
+
+    #Adds Homebrew into your .zprofile file so you can use it in future terminal sessions
+
+    cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+
+else
+    exit 1
+fi
