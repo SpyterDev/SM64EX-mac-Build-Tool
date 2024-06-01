@@ -18,7 +18,7 @@ cd "$repodir"
 # Requests whether or not to add an icon if an icon is not found
 
 if [ ! -e $scriptdir/icon.icns ]; then
-    printf "\nYou have not added an icon, would you like to add one?\nEnter the path (or just drag and drop) the icon you want to add. If not press enter again\n> "
+    printf "\nYou have not added an icon, would you like to add one?\nEnter the path (or just drag and drop) the icon you want to add here. If not press enter again:\n > "
     read -r input
     if [ -e $input ] && [ ! $input = "" ]; then
         cp "$input" "$scriptdir/icon.icns"
