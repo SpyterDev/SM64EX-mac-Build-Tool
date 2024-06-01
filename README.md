@@ -18,7 +18,7 @@ Clone the sm64ex repository:
 git clone https://github.com/sm64pc/sm64ex.git
 ```
 
-Place a US Super Mario 64 ROM in the sm64ex repository root and name it `baserom.us.z64`, as per the instructions in the sm64ex repository. Apply any patches you wish to apply before compilation.
+Place a US Super Mario 64 ROM in the sm64ex repository root and name it `baserom.us.z64`, as per the instructions in the sm64ex repository. Apply any patches you wish to apply before compilation. By default the 60 FPS patch script will be applied.
 
 Clone this repository:
 
