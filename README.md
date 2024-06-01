@@ -7,7 +7,7 @@ A script to compile sm64ex for macOS (Intel or Apple silicon) and create an app 
 Compiling sm64ex and creating an app bundle with all dylibs included on macOS requires the following Homebrew bottles to be installed:
 
 ```sh
-brew install gcc make audiofile sdl2 glew glfw pkg-config mingw-w64 dylibbundler
+brew install gcc make sdl2 glew glfw pkg-config mingw-w64 dylibbundler
 ```
 
 ## Building
