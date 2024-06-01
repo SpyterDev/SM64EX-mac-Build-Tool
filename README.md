@@ -1,6 +1,6 @@
 # Note!
 
-This is tool is not made by the developers of sm64ex. Just a tool made to make the process of compiling it quicker and a little more accessible for those who have never used terminal, or compiled anything before.
+This is tool is not made by the developers of sm64ex. This is just a fan-made tool made on top of Haframjolk's build script and app bundler, to make the process of compiling it quicker and a little more accessible for those who have never used terminal, or compiled anything before.
 
 # About SM64EX-mac Build Tool
 
@@ -11,7 +11,7 @@ SM64EX-mac Build Tool is a script to compile sm64ex (and easily install everythi
 Compiling sm64ex and creating an app bundle with all dylibs included on macOS requires the following Homebrew bottles to be installed, however if you run the sm64ex-mac build tool everything you need will be automatically be installed:
 
 ```sh
-brew install gcc make sdl2 glew glfw pkg-config dylibbundler
+brew install gcc make sdl2 glew glfw pkg-config dylibbundler mingw-w64
 ```
 
 ## Building
@@ -40,7 +40,7 @@ The freshly made app will then be appear in a new folder called `out` in the sam
 
 ## Credits
 
-This is a built on top of Haframjolk's tool
+This is a built on top of Haframjolk's build script
 
-- SpyterDev: Developer behind this fork. Created dependency installer, build prompts (option to also add an icon in script, and option to apply the 60 FPS Patch before compiliation).
+- SpyterDev: Developer behind this fork. Created dependency installer, build prompts (option to also add an icon in script, option to add build options, and option to apply the 60 FPS Patch before compiliation).
 - Haframjolk: The original developer behind the script (https://github.com/haframjolk/sm64ex-mac). Created the app bundling implementation which the fork uses!
