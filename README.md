@@ -1,24 +1,24 @@
-# sm64ex-mac
+# SM64EX-mac Build Tool
 
-A script to compile sm64ex for macOS (Intel or Apple silicon) and create an app bundle.
+A script to compile sm64ex (and easily install everything you need to compile it) for macOS (Intel or Apple silicon) and create an app bundle (turn it into an app that you can open). There are more feature to come such as the ability to say what build flags other build flags you want on, without having to change it in the shell script. Also a UI wrapper might also be made!
 
 ## Dependencies
 
-Compiling sm64ex and creating an app bundle with all dylibs included on macOS requires the following Homebrew bottles to be installed:
+Compiling sm64ex and creating an app bundle with all dylibs included on macOS requires the following Homebrew bottles to be installed, however if you run the sm64ex-mac build tool everything you need will be automatically be installed:
 
 ```sh
-brew install gcc make sdl2 glew glfw pkg-config mingw-w64 dylibbundler
+brew install gcc make sdl2 glew glfw pkg-config dylibbundler
 ```
 
 ## Building
 
-Clone the sm64ex repository:
+Download (clone) the sm64ex repository (or you can have the script download it):
 
 ```sh
 git clone https://github.com/sm64pc/sm64ex.git
 ```
 
-Place a US Super Mario 64 ROM in the sm64ex repository root and name it `baserom.us.z64`, as per the instructions in the sm64ex repository. Apply any patches you wish to apply before compilation. By default the 60 FPS patch script will be applied.
+Place a legally obtained US Super Mario 64 ROM in the sm64ex repository root and name it `baserom.us.z64`. Then apply any patches you want to apply, before compilation. By default the sm64ex-mac build tool will prompt you to apply 60 FPS patch script.
 
 Clone this repository:
 
@@ -26,12 +26,12 @@ Clone this repository:
 git clone https://github.com/haframjolk/sm64ex-mac.git
 ```
 
-Place the icon you wish to use for the app bundle in the repository root and name it `icon.icns`.
+Place the icon you want to use for the app bundle in the repository root and name it `icon.icns` or when the sm64ex-mac Build Tool asks you if you want to add an icon, drag and drop it.
 
-Run the build script with the path to your sm64ex repository root as an argument:
+After you have the sm64ex repository set up just run the build script:
 
 ```sh
-./build-sm64ex-mac.sh ../sm64ex
+./install_build_everything.sh
 ```
-
-The resulting app bundle will be located in `out/sm64ex.app`.
+In the releases, there is a version (the same thing without the .sh in the name) which you can open from Finder! That might be easier.
+The freshly made app will then be appear in a new folder called `out` in the same folder which the sm64ex-mac Build Tool.
