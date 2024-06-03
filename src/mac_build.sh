@@ -15,7 +15,7 @@ repodir=$(realpath "$repodir")
 
 cd "$repodir"
 
-# Requests whether or not to add an icon if an icon is not found
+# Requests whether or not to add an icon if an icon is not found and clears screen after
 
 if [ ! -e $scriptdir/icon.icns ]; then
     printf "\nYou have not added an icon, would you like to add one?\nEnter the path (or just drag and drop) the icon you want to add here. If not press enter again:\n > "
@@ -25,6 +25,7 @@ if [ ! -e $scriptdir/icon.icns ]; then
         
     fi
 fi
+printf "\e[1;1H\e[2J"
 
 # Requests whether to apply the 60 FPS Patch
 
@@ -34,42 +35,51 @@ ONLY APPLY THIS PATCH ONCE! If you patched the game once you don't have to patch
 
 Press Enter to Continue"
 
-# Waits for user input to continue
+# Waits for user input to continue, calls sm64ex's patcher, then clears screen
 
 read -r input
 $repodir/tools/apply_patch.sh $repodir/enhancements/60fps_ex.patch
+printf "\e[1;1H\e[2J"
 
-# It is recommended that you add some more build parameters
-# It is better to add these parameters for the best experience: BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 
+# Prompts recommended build options and clears screens after each prompt
 
 printf "\nWould you like to compile with BETTERCAMERA (Puppycam).\nThis will allow you to look around using your mouse!\nThis is Highly recommended [Y/N]:\n > "
 read -q using_better_cam
+printf "\e[1;1H\e[2J"
+
+printf "\nWould you like to compile with NODRAWINGDISTANCE.\nThis will remove the render distance limit and allow you to see futher!\nThis is recommended [Y/N]:\n > "
+read -q using_no_draw_distance
+printf "\e[1;1H\e[2J"
+
+printf "\nWould you like to compile with TEXTURE_FIX.\nThis will fix some texture related bugs!\nThis is recommended [Y/N]:\n > "
+read -q using_texture_fix
+printf "\e[1;1H\e[2J"
+
+# Converts prompt input to bool value
 
 if [ $using_better_cam = "y" ]; then
     using_better_cam=1
 else
     using_better_cam=0
-    fi
-
-printf "\nWould you like to compile with NODRAWINGDISTANCE.\nThis will remove the render distance limit and allow you to see futher!\nThis is recommended [Y/N]:\n > "
-read -q using_no_draw_distance
+fi
 
 if [ using_no_draw_distance = "y" ]; then
     using_no_draw_distance=1
 else
     using_no_draw_distance=0
-    fi
-
-printf "\nWould you like to compile with TEXTURE_FIX.\nThis will fix some texture related bugs!\nThis is recommended [Y/N]:\n > "
-read -q using_texture_fix
-
+fi
+    
 if [ using_texture_fix = "y" ]; then
     using_texture_fix=1
 else
     using_texture_fix=0
-    fi
+fi
+
+# Calls makefile in sm64ex's source code
 
 gmake OSX_BUILD=1 RENDER_API=GL BETTERCAMERA=$using_better_cam NODRAWINGDISTANCE=$using_no_draw_distance TEXTURE_FIX=$using_texture_fix -j4 
+
+# Goes into script directory
 
 cd "$scriptdir"
 # Cleanup

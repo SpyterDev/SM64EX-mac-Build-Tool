@@ -3,3 +3,7 @@
 # Installs all the need dependencies from the Homebrew Package Manager to compile sm64ex (Super Mario 64 EX)
 
 brew install make sdl2 glew glfw pkg-config dylibbundler mingw-w64
+
+# Clears screen
+
+printf "\e[1;1H\e[2J"

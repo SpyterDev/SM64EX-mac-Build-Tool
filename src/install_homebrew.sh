@@ -26,6 +26,10 @@ if [ install_homebrew = "y" ]; then
 
     cat 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 
+    # Clears screen 
+
+    printf "\e[1;1H\e[2J"
+
 else
     exit 1
 fi
